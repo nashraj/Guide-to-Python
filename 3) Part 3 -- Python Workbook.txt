@@ -1,0 +1,525 @@
+Guide Author: Vignesh R.
+Source: A Python Book: Beginning Python, Advanced Python, and Python Exercises by Dave Kuhlman, 2013
+PDF: python_book_01.pdf
+Chapter Status: Part 3 IP
+Difficulty: Intermediate
+
+Txt Document Notes:
+	- Txt document is an excerpt of the important notes and examples from the PDF Guide
+	- Txt document to be used in conjunction with PDF guide
+
+Contents Page:
+Part 3 -- Python Workbook
+	3.1   Introduction	
+	3.2   Lexical Structures
+		3.2.1   Variables and names
+		3.2.2   Line structure
+		3.2.3   Indentation and program structure
+	3.3   Execution Model
+	3.4   Built-in Data Types
+		3.4.1   Numbers
+			3.4.1.1   Literal representations of numbers
+			3.4.1.2   Operators for numbers
+			3.4.1.3   Methods on numbers
+		3.4.2   Lists
+			3.4.2.1   Literal representation of lists
+			3.4.2.2   Operators on lists
+			3.4.2.3   Methods on lists
+			3.4.2.4   List comprehensions
+		3.4.3   Strings
+			3.4.3.1   Characters
+			3.4.3.2   Operators on strings
+			3.4.3.3   Methods on strings
+			3.4.3.4   Raw strings
+			3.4.3.5   Unicode strings
+		3.4.4   Dictionaries
+			3.4.4.1   Literal representation of dictionaries
+			3.4.4.2   Operators on dictionaries
+			3.4.4.3   Methods on dictionaries
+		3.4.5   Files
+		3.4.6   A few miscellaneous data types
+			3.4.6.1   None
+			3.4.6.2   The booleans True and False
+	3.5   Statements
+		3.5.1   Assignment statement
+		3.5.2   print statement
+		3.5.3   if: statement exercises
+		3.5.4   for: statement exercises
+		3.5.5   while: statement exercises
+		3.5.6   break and continue statements
+		3.5.7   Exceptions and the try:except: and raise statements
+	3.6   Functions
+		3.6.1   Optional arguments and default values
+		3.6.2   Passing functions as arguments
+		3.6.3   Extra args and keyword args
+			3.6.3.1   Order of arguments (positional, extra, and keyword args)
+		3.6.4   Functions and duck-typing and polymorphism
+		3.6.5   Recursive functions
+		3.6.6   Generators and iterators
+	3.7   Object-oriented programming and classes
+		3.7.1   The constructor
+		3.7.2   Inheritance -- Implementing a subclass
+		3.7.3   Classes and polymorphism
+		3.7.4   Recursive calls to methods
+		3.7.5   Class variables, class methods, and static methods
+			3.7.5.1   Decorators for classmethod and staticmethod
+	3.8   Additional and Advanced Topics
+		3.8.1   Decorators and how to implement them
+			3.8.1.1   Decorators with arguments
+			3.8.1.2   Stacked decorators
+			3.8.1.3   More help with decorators
+		3.8.2   Iterables
+			3.8.2.1   A few preliminaries on Iterables
+			3.8.2.2   More help with iterables
+		3.9   Applications and Recipes
+			3.9.1   XML -- SAX, minidom, ElementTree, Lxml
+			3.9.2   Relational database access
+			3.9.3   CSV -- comma separated value files
+			3.9.4   YAML and PyYAML
+			3.9.5   Json
+
+=========================			
+Part 3 -- Python Workbook
+=========================
+3.1   Introduction	
+	- workbook and exercise-with-solutions approach
+	
+3.2   Lexical Structures
+	3.2.1   Variables and names --> (Worked Examples: Completed)
+		- Recap Notes:
+			- A name is any combination of letters, digits, and the underscore
+			- The first character must be a letter or an underscore
+			- Case is significant
+			- Python keywords should not be used as variable names
+			- Operator symbols ( + , * , etc) in Python and will separate names
+			- Do not use a dash, or other operator, in the middle of a name
+			
+	3.2.2   Line structure --> (Worked Examples: Completed)
+		- Recap Notes:
+			- Statement separators are not normally needed
+			- if we want more than one statement on a line use a semi-colon
+			- open contexts are extendable across lines (which is an open 
+			  parenthesis, an open square bracket, or an open curly bracket)
+			- Another extension method is using back slash as the last character of 
+			  the line
+		
+	3.2.3   Indentation and program structure --> (Worked Examples: Completed)		
+		- Recap Notes:
+			- Standard coding practice for Python is to use four spaces per 
+			  indentation level
+			- Do not use Hard Tabs 
+
+3.3   Execution Model --> (Worked Examples: Completed)
+	
+	- Recap Notes:
+		- Python evaluates Python code from the top of a module down to the
+		  bottom of a module
+		- Binding statements at top level create names (and bind values to those
+		  names) as Python evaluates code. Further more, a name is not created 
+		  until it is bound to a value/object
+		- A nested reference to a name is not used until that nested code is
+		  evaluated
+		  
+3.4   Built-in Data Types
+	3.4.1   Numbers
+	- Most Common: Integers & Floats
+	- Uncommon: long integers & complex numbers
+	  (Python will convert to using a long integer automatically)
+	- Python does "mixed arithmetic". You can add, multiply, and divide 
+	  integers and floats. When you do, Python "promotes" the result to a 
+	  float
+	  
+		3.4.1.1   Literal representations of numbers
+			- Note: Be aware that a sequence of digits beginning with zero 
+			  represents an octal value
+			- Note: Exponent Example --> 1e3 or 1.0e3
+			- Examples in PDF on variable declarations
+			
+		3.4.1.2   Operators for numbers (+ , - , * , Etc) 
+			- Note: Floor Division(//) and Modulos(%) work differently with 
+					negative numbers
+			
+		3.4.1.3   Methods on numbers
+			- Special methods often have names that begin and end with a double 
+			  underscore
+		
+	3.4.2   Lists (Do Mini Learning Module) 
+		- Lists Recap:
+			- dynamic array
+			- a sequence that can be indexed into and that can grow and shrink
+			- A list has a length 
+			- A list has an order
+			- A list is heterogeneous (Different object types can be inserted)
+			  (Can contain integers / other lists / strings simultaneously)
+			- Lists are mutable (Can be changed)
+			- can extended/add or shrink to a list
+			- can insert items at the start or end of the list
+			- can change the order of items in a list
+			
+		- Tuple Recap:
+			- index-able container
+			- tuple is immutable (Cannot be modified)
+			- Is also heterogeneous
+			
+		3.4.2.1   Literal representation of lists
+			- Examples of different list and tuple creations in PDF
+			- Note: Creation of single tuple requires comma after the 1st item
+		
+		3.4.2.2   Operators on lists
+			- See examples in PDF
+			- Note: Concatenation of two lists can use the '+' operator
+			- Note: Comparison operators can be used to compare lists
+			
+		3.4.2.3   Methods on lists
+			- Simple examples in PDF
+			- Methods Covered:
+				- Extend() - Extend list a with list b 
+				- Append() - Add into end of list
+				- Insert() - Into any position into a list
+				- pop() - returns the "right-most" item from a list and
+				  removes that item from the list
+			- Note: the append and pop methods taken together can be used to 
+			  implement a stack, that is a LIFO (last in first out) data 
+			  structure
+		
+		3.4.2.4   List comprehensions (Do Mini Learning Module) 
+			- convenient way to produce a list from an iterable
+			- Summary: Single line for loop in square brackets
+			- Can also contain an 'if' clause
+			- Refer to Solutions of List comprehensions in PDF
+		
+	3.4.3   Strings
+		- Has a length, accessible by len() method
+		- Indexable, access index by using bracketing eg. mystring[5]
+		- Sliceable, access slice by using bracketing eg. mtstring[5:8]
+		- Can be created with either single or double quotes
+		- Escape characters with backslash
+		- Triple quote to create multiline strings
+		- See provided examples on how to layer quotes within strings
+		
+		3.4.3.1   Characters
+			- In python a character is a string of length 1
+			- ord() function can be used to convert string into is respective
+			  integer value, and chr() for vice-versa
+			
+		3.4.3.2   Operators on strings
+			- concatenate strings with the "+" operator 
+			- create multiple concatenated copies of a string with the "*"
+			  operator
+			- augmented assignment (+= and *=) also work
+			- Useful examples:
+				a) Create a horizontal divider line with: divider = '-' * 50
+				b) os.sep() is a platform independent way to construct paths
+				   (See examples in pdf)
+				   
+		3.4.3.3   Methods on strings
+			- Use dir() to obtain a list of methods available in a 
+			  class or method
+			- Use help() method to get detailed information:
+				eg. help("".strip)
+			- Useful methods for managing strings:
+				a) rstrip() method strips whitespace off the right side
+				b) center(n) method centers within a padding of width 'n'
+				c) upper() method creates new string with all uppercase
+				d) split(sep) method produces a list of strings that are 
+				   separated by 'sep (default seperator is whitespace)
+				e) join() method concatenates list of strings into a string 
+				
+		3.4.3.4   Raw strings
+			- convinient way include the backslash character in a string 
+			  without escaping (with an additional backslash)
+			- Prefixed with an "r" or "R"
+				eg: print r'abc \ def'
+			
+		3.4.3.5   Unicode strings
+			- Unicode strings give us a consistent way to process character
+			  data from a variety of character encodings
+			- embedded with unicode prefix character ("u") or the unicode 
+			  type eg: unicode(some_string)
+			- convert between codes using encode() and decode() methods
+			- refer to examples in PDF on encoding and decoding
+		
+	3.4.4   Dictionaries (Create Mini Module)
+		- unordered collection of key-value pairs
+		- has a length, specifically the number of key-value pairs
+		- provides fast look up by key
+		- keys must be immutable object types
+		
+		3.4.4.1   Literal representation of dictionaries
+			- Dict Example: dict = {'width': 8.5, 'height': 11}
+			- Refer to simple examples in PDF
+
+		3.4.4.2   Operators on dictionaries
+			- len(d) returns the number of pairs in a dictionary
+			- Indexing -- You can both set and get the value associated with a  
+			  key by using the indexing operator [ ]
+			- The in operator tests for the existence of a key in a dictionary
+			- Refer to simple examples in PDF
+			
+		3.4.4.3   Methods on dictionaries
+			- Detailed list of methods in PDF
+			- use the d.items() method to retrieve a list of tuples containing
+			  key-value pairs, then use unpacking to capture the key and value
+			- Retrieve a list of keys with the keys() method, the sort it with
+			  the list sort() method
+			- To test for the existence of a key in a dictionary, we can use
+			  either the in operator
+			- Refer to simple examples in PDF
+			
+	3.4.5   Files (Create Mini Module)
+		- read / write and append mode
+		- open() built-in function is used to create a file object
+		- Steps for basic file reading and writing:
+			1) open with open(r/w/a)
+			2) file.write('line') or print line in file
+			3) file.close()
+			note: Append mode writes at end of file, write mode overrides file
+		- Refer to simple example in PDF
+	
+		- Useful extra methods:
+			a) split() or splitlines() methods to split the file into lines
+			b) f.readlines() method returns a list of lines in a file
+			c) Since a file object (open for reading) is itself an iterator, 
+			   we can iterate over it in a for statement
+			- Usefule examples in PDF
+			
+	3.4.6   A few miscellaneous data types
+		3.4.6.1   None
+			- None is a singleton. There is only one instance of None. 
+			- Use this value to indicate the absence of any other "real" value
+			- Test for None with the identity operator is
+			
+		3.4.6.2   The booleans True and False
+			- Python has the two boolean values True and False,
+			  Many comparison operators return True and False
+
+3.5   Statements
+	3.5.1   Assignment statement
+		- The assignment statement uses the assignment operator '='
+		- There is also augmented assignment using the operators +=, -=, *=, /=, etc
+			- Examples of tasks that augmentor operators can conduct:
+				a) += can increment the value of an integer
+				b) -= operator decrements the value of an integer
+				c) += appends characters to the end of a string
+				d) += operator appends items in one list to another 
+		- Refer to simple examples in PDF
+	
+	3.5.2   print statement
+		- replaced by print() function in python3
+	
+	3.5.3   if: statement exercises
+		- The if statement is a compound statement that enables us to
+		  conditionally execute blocks of code
+		- also has optional elif: and else: clauses
+			- the following values count as "false":
+				a) False
+				b) None
+				c) Numeric zero
+				d) An empty collection, for example an empty list or dictionary
+				e) An empty string (a string of length zero)
+				
+		- Refer to examples on PDF for:
+			a) test for an empty or non-empty list
+			b) simulate a "switch" statement using if:elif:...
+		  
+	3.5.4   for: statement exercises
+		- For statement is the Python way to iterate over and process the elements
+		  of a collection or other iterable
+		- Example use cases:
+			a) The for: statement can iterate over the items in a list
+			b) The for: statement can iterate over the characters in a string
+			(Simple examples in PDF)
+			
+		- Additional Examples:
+			- The range() built-in function gives us a sequence to iterate over
+			  (Python 3 no longer uses xrange)
+			- The for: statement enables us to iterate over iterables as well as 
+			  collections
+			- Use enumerate() if an endex is needed while iterating over a sequence
+			  (see simple example in PDF on enumerate function)
+			  
+	3.5.5   while: statement exercises
+		- while: statement executes a block of code repeatedly as long as a 
+		  condition is true
+		  (simple example in PDF showing While loop and for loop comparison)
+		
+	3.5.6   break and continue statements
+		- The continue statement skips the remainder of the statements in the body 
+		  of a loop and starts immediately at the top of the loop again.
+		- A break statement in the body of a loop terminates the loop. It exits 
+		  from the immediately containing loop.
+		- break and continue can be used in both for: and while: statements
+		
+	3.5.7   Exceptions and the try:except: and raise statements
+		- The try:except: statement enables us to catch an exception that is 
+		  thrown from within a block of code
+		- or from code called from any depth withing that block
+		- The raise statement enables us to throw an exception
+		- An exception is a class or an instance of an exception class. If an 
+		  exception is not caught, it results in a traceback and termination of 
+		  the program
+		- You can define your own exception classes. To do so, create an empty 
+		  subclass of the class Exception
+		- (Detailed examples in PDF)
+		
+3.6   Functions
+	- It groups a block of code together so that we can call it by name
+	- It enables us to pass values into the the function when we call it
+	- It can returns a value (even if None)
+	- When a function is called, it has its own namespace. Variables in the 
+	  function are local to the function (and disappear when the function exits)
+	
+	3.6.1   Optional arguments and default values
+		- can provide a default value for an argument to a function
+			- eg: def sample_func(arg1, arg2, arg3='empty', arg4=0)
+		- That argument becomes optional (when the function is called)
+		- Do not use a mutable object as a default value
+		  (Refer to detailed example in PDF on avoiding mutable default values)
+			
+	3.6.2   Passing functions as arguments
+		- A function, like any other object, can be passed as an argument elsewhere
+		  as it is a first class object
+		- A first class object can be:
+			a) Stored in a data structure
+			b) Passed to a function
+			c) Returned from a function
+		- Refer to detailed example in PDF
+		
+	3.6.3   Extra args and keyword args
+		- Additional positional arguments not used by the originally defined 
+		  function are collected by using a single asterisk(*)
+		- can also be collected in a dictionary and passed to an argument
+		  preceded by a double asterisk
+		- Refer to detailed example 1 in PDF on usage of extra arguments
+		- Refer to detailed example 2 to pass on all arguments to another function
+	
+		3.6.3.1   Order of arguments (positional, extra, and keyword args)
+			a) Function Definition Argument Order:
+				1) Positional (normal, plain) arguments
+				2) Arguments with default values, if any
+				3) Extra arguments parameter (proceded by single asterisk), 
+				   if present
+				4) Keyword arguments parameter (proceded by double asterisk), 
+				   if present
+				   
+			b) Function Call Argument Order:
+				1) Positional (plain) arguments
+				2) Extra arguments, if present
+				3) Keyword arguments, if present
+			
+	3.6.4   (INCOMPLETE) Functions and duck-typing and polymorphism
+		- If the arguments return value of a function satisfy some description,
+		  then we can say that the function is polymorphic with respect to that
+		  description
+		- 
+		
+		- Duck Typing:
+			- Duck typing is a concept related to dynamic typing, where the type 
+			  or the class of an object is less important than the methods it 
+			  defines. When you use duck typing, you do not check types at all.
+			  Instead, you check for the presence of a given method or attribute
+	
+	3.6.5   Recursive functions
+		- A recursive function is a function that calls itself
+		- A recursive function must have a limiting condition, or else it will 
+		  loop endlessly
+		- Each recursive call consumes space on the function call stack. 
+		  Therefore, the number of recursions must have some reasonable upper bound
+		- (Refer to detailed example in PDF)
+	
+	3.6.6   (Lack Understanding) Generators and iterators:
+		- "iterator protocol" defines what an iterator object must do in order to 
+		  be usable in an "iterator context" such as a 'for' statement
+		- easy way to define an object that obeys the iterator protocol is to 
+		  write a generator function
+		- A generator function contains yield statements
+			- Note: yield is an expression in python 3.x
+			- This enables the consumer to communicate back with the producer
+		- Refer to detailed example in PDF
+
+3.7   Object-oriented programming and classes
+	- Classes provide Python's way to define new data types and to do
+	  OOP (object-oriented programming)
+	- 2 Main types:
+		a) Consumer Objects
+		b) Producer Objects
+	- Example of defining a class & class method:
+		-------------------
+		class Demo(object):
+			def show(self):
+				print 'hello'
+
+		def test():
+			a = Demo()
+			a.show()
+		test()
+		
+		Output -> hello
+		-------------------
+		Note:'object' is used as a superclass as it is used to define a 
+			  "new-style" class and because there is no other class that is wanted
+			  as a superclass -> More information: New-style Classes
+			  http://www.python.org/doc/newstyle/
+
+	3.7.1   The constructor
+		- A class can define methods with special names, these names begin and
+		  end with a double underscore
+		- '__init__' is the constructor for a class, is called each time an 
+		  instance of the class is created
+		- Implementing this method in a class gives us a chance to initialize 
+		  each instance of our class
+		(Refer to defining Example 1 in PDF)
+		
+		- Good to initialize all instance variables in the constructor
+		  as it makes it clear for other viewers to understand code
+		(Refer to Example 2 in PDF)
+		
+	3.7.2   Inheritance --> Implementing a subclass
+		- A subclass extends or specializes a superclass by adding additional 
+		  methods to the superclass and by overriding methods (with the same name)
+		  that already exist in the superclass
+		(Refer to detailed example in PDF)
+		  
+	3.7.3   Classes and polymorphism (Still Unclear)
+		- Python also supports class-based polymorphism (shown in 3.7.2 example)
+		(Refer to additional example in PDF)
+		
+	3.7.4   Recursive calls to methods
+		- A method in a class can recusively call itself
+		- similar to the way in which we implemented recursive functions
+		(refer to example in PDF)
+		
+	3.7.5   Class variables, class methods, and static methods (Incomplete)
+		- A class variable is one whose single value is shared by all instances
+		  of the class or is shared by all who have access to the class (object)
+		- "Normal" methods are instance methods, An instance method receives the
+		  instance as its first argument
+		- A instance method is defined by using the def statement in the body of 
+		  a class statement
+		
+		- A class method receives the class as its first argument
+		- A class method is defined by defining a normal/instance method, then 
+		  using the classmethod built-in function
+		(refer to example on defining classmethod)
+		
+		- A static method does not receive anything special as its first argument
+		- A static method is defined by defining a normal/instance method, then 
+		  using the staticmethod built-in function
+		(refer to example on defining staticmethod)
+		
+		3.7.5.1   Decorators for classmethod and staticmethod (skipped to revisit)
+	
+3.8   Additional and Advanced Topics
+	3.8.1   Decorators and how to implement them
+		3.8.1.1   Decorators with arguments
+		3.8.1.2   Stacked decorators
+		3.8.1.3   More help with decorators
+	3.8.2   Iterables
+		3.8.2.1   A few preliminaries on Iterables
+		3.8.2.2   More help with iterables
+	3.9   Applications and Recipes
+		3.9.1   XML -- SAX, minidom, ElementTree, Lxml
+		3.9.2   Relational database access
+		3.9.3   CSV -- comma separated value files
+		3.9.4   YAML and PyYAML
+		3.9.5   Json

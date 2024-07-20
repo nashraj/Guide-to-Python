@@ -1,0 +1,450 @@
+Guide Author: Vignesh R.
+Source: A Python Book: Beginning Python, Advanced Python, and Python Exercises by Dave Kuhlman, 2013
+PDF: python_book_01.pdf
+Chapter Status: Part 2 Completed (To run through again for worked examples)
+Difficulty: Intermediate
+
+Txt Document Notes:
+	- Txt document is an excerpt of the important notes and examples from the PDF Guide
+	- Txt document to be used in conjunction with PDF guide
+
+Contents Page:
+	Part 2 -- Advanced Python
+		2.1   Introduction -- Python 201 -- (Slightly) Advanced Python Topics
+		2.2   Regular Expressions
+			2.2.1   Defining regular expressions
+			2.2.2   Compiling regular expressions
+			2.2.3   Using regular expressions
+			2.2.4   Using match objects to extract a value
+			2.2.5   Extracting multiple items
+			2.2.6   Replacing multiple items
+		2.3   Iterator Objects
+			2.3.1   Example - A generator function
+			2.3.2   Example - A class containing a generator method
+			2.3.3   Example - An iterator class
+			2.3.4   Example - An iterator class that uses yield
+			2.3.5   Example - A list comprehension
+			2.3.6   Example - A generator expression
+		2.4   Unit Tests
+			2.4.1   Defining unit tests
+				2.4.1.1   Create a test class.
+		2.5   Extending and embedding Python
+			2.5.1   Introduction and concepts
+			2.5.2   Extension modules
+			2.5.3   SWIG
+			2.5.4   Pyrex
+			2.5.5   SWIG vs. Pyrex
+			2.5.6   Cython
+			2.5.7   Extension types
+			2.5.8   Extension classes
+		2.6   Parsing
+			2.6.1   Special purpose parsers
+			2.6.2   Writing a recursive descent parser by hand
+			2.6.3   Creating a lexer/tokenizer with Plex
+			2.6.4   A survey of existing tools
+			2.6.5   Creating a parser with PLY
+			2.6.6   Creating a parser with pyparsing
+				2.6.6.1   Parsing comma-delimited lines
+				2.6.6.2   Parsing functors
+				2.6.6.3   Parsing names, phone numbers, etc.
+				2.6.6.4   A more complex example
+		2.7   GUI Applications
+			2.7.1   Introduction
+			2.7.2   PyGtk
+				2.7.2.1   A simple message dialog box
+				2.7.2.2   A simple text input dialog box
+				2.7.2.3   A file selection dialog box
+			2.7.3   EasyGUI
+				2.7.3.1   A simple EasyGUI example
+				2.7.3.2   An EasyGUI file open dialog example
+		2.8   Guidance on Packages and Modules
+			2.8.1   Introduction
+			2.8.2   Implementing Packages
+			2.8.3   Using Packages
+			2.8.4   Distributing and Installing Packages
+		2.9   End Matter
+			2.9.1   Acknowledgements and Thanks
+			2.9.2   See Also
+
+=====================================================================
+2.1   Introduction -- Python 201 -- (Slightly) Advanced Python Topics
+=====================================================================
+- This document is intended as notes for a course on (slightly) advanced Python topics
+
+=========================
+2.2   Regular Expressions
+=========================
+2.2.1   Defining regular expressions:
+	- A sequence of characters that will match sequences of characters in a target
+
+2.2.2   Compiling regular expressions:
+	- Compiling is recommended if a regex expression is to be used more then once
+	- Eg. --> pattern = re.compile('aa[bc]*dd')
+	- (refer to simple example in pdf)
+	
+2.2.3   Using regular expressions:
+	- 'match()' to match at the beginning of a string
+	- 'search()' to search a string and match the first string from the left
+	- When a match or search is successful, it returns a match object. When it fails,
+	  it returns 'None'
+	- (refer to simple example in PDF)
+
+2.2.4   Using match objects to extract a value:
+	- Match objects enable you to extract matched sub-strings after performing a match
+	- A match object is returned by successful match
+	- (Refer to examples in PDF for target group matching)
+	
+	Notes:
+		- Put parentheses around the portion of the regular expression that will match 
+		  what you want to extract (Each pair of parentheses marks off a group)
+		- After the search, check to determine if there was a successful match by
+	      checking for a matching object
+		- Method and example  available in PDF if more than one group in the 
+		  regular expression is specified
+		  
+2.2.5   Extracting multiple items:
+	- (Refer to simple example in PDF)
+	- Use multiple parenthesized substrings in the regular expression to indicate the 
+	  portions (groups) to be extracted
+	- "mo.group(1, 2)" returns the values of the first and second group in the string
+	  matched
+	- Alternate solution --> print(mo.expand(r'value1: \1 value2: \2'))
+	
+2.2.6   Replacing multiple items:
+	a) A simple way to perform multiple replacements using a regular expression is to use
+	   the 're.subn()' function (Refer to simple example in PDF)
+	b) Use a function instead of a constant replacement string for more complex 
+	   replacements
+	- (Refer to simple and complex examples in PDF for more information, recommeneded to
+	   create mini-module for better understanding and referencing)
+
+======================	   
+2.3   Iterator Objects
+======================
+- Learn how to:
+	a) implement a generator function (function which returns an iterator when called)
+	b) implement a class containing a generator method (method which returns an iterator 
+	   when called)
+	c) The iterator protocol (methods an iterator must support and what those methods
+	   must do)
+	d) Implement an iterator class (a class whose instances are iterator objects)
+	e) Implement recursive iterator generators (an iterator generator which recursively
+	   produces iterator generators)
+	f) "refresh" an implementation of an iterator object (an iterator class)
+
+- Definitions:
+	- Iterator: An object that satisfies (implements) the iterator protocol
+	- Iterator protocol: Implimented if an object has a 'next()' and '__iter__()' methods
+	- Iterator class: A class that implements (satisfies) the iterator protocol
+	- (Iterator) generator function: Function or method that returns an iterator(object)
+									 or contains 'yield' statement
+	- Generator expression: Expression which produces an iterator object, is similar to 
+							list comprehension but enclosed in () instead of []
+							
+- Additional Notes:
+	- Function that contains a yeild statement is a generator function,
+	  returns an iterator (object that uses next() and __iter__() methods)
+	- Several ways of implimenting iterators --> 'iter()' method recommended
+	- An iterator can be used in:
+		a) Iterator context: Eg. in a 'for' statement 
+		b) List Comprehension
+		c) Generator Expression: Iterator produces its values
+	
+- Importance of Iterator/Generator Patterns:
+	a) Once mastered, it is a simple, convenient, and powerful programming pattern
+	b) Many uses for it
+	c) Helps to lexically separate the producer code from the consumer code
+		- Easier to locate problems and to modify or fix code in a way that is 
+		  localized and does not have unwanted side-effects
+	d) Enables you to define your own abstract sequences:
+		- Sequences whose composition are defined by your computations rather 
+		  than by their presence in a container
+		- Your iterator can calculate or retrieve values as each one is requested
+	
+2.3.1 Example - A generator function
+	- (Refer to example 1 in PDF) - Function containing a yield statement
+	- The value returned by the call to the generator (function) is an iterator
+	  It obeys the iterator protocol, and it has both __iter__() and next() methods
+	- can use a for statement to iterate over the values returned by the generator
+	- can get its values by using 'next()' method until reaching stopiteration
+	  exception	
+		- This ability to call the next method enables us to pass the iterator 
+		  object around and get values at different locations in our code
+	- Once we have obtained all the values from an iterator, it is, in effect,
+      "empty" or "exhausted, there is no "rewind" operation. But, you can call the
+	  the generator function again to get a "fresh" iterator
+	
+	- (Refer to example 2 in PDF) - Using Generator expression
+		- useful when you already have a collection or iterator to work with
+		- generator expression looks almost like a list comprehension, but is
+		  surrounded by parentheses rather than square brackets
+	
+2.3.2 Example - A class containing a generator method
+	- (Refer to example in PDF)
+	- This example shows two ways to use the generator, specifically:
+		a) The walk method in the class Node and (Similar to b)
+		b) The walk function (similar to a)
+	- Each time this method is called, it produces a (new) iterator object
+	- This method is similar to the iterkeys and itervalues methods in the 
+	  dictionary built-in object
+
+2.3.3 Example - An iterator class
+	- (Refer to example in PDF)
+	- Note that the example does not use 'yeild'
+	- This class implements the iterator protocol, meaning instances of this class
+	  are iterators
+	- in this example, we provide a refresh method which enables us to "rewind"
+	  and reuse the iterator instance (Differs from the usual case of being
+	  "exhausted" after iteration is complete)
+	
+2.3.4 Example - An iterator class that uses yield
+	- Sometimes the 'next' method is easier and more straight-forward to implement 
+	  using 'yield'
+	- (Refer to example in PDF)
+	- Note: Because the _next method uses yield, using it allows for auto-resuming
+			of the process which helps to reduce book-keeping. However, an iterator
+			needs to be explicitly produced with this method. Done so by using the 
+			'__next()' method (which contains the yield statement)
+			(refer to Notes and explanation in PDF for more information)
+	  
+2.3.5 Example - A list comprehension (Iteration in single code-line-item)
+	- list comprehension looks a bit like an iterator, but it produces a list
+	- (Refer to example in PDF)
+
+2.3.6 Example - A generator expression
+	- (Refer to example in PDF)
+	- A generator expression looks quite similar to a list comprehension
+	  but is enclosed in parentheses rather than square brackets
+	- Unlike a list comprehension, a generator expression does not produce a list; 
+	  it produces an generator object. A generator object is an iterator.
+	- Note: we can use the iterator object later in our code, can save it in a 
+	  data structure, and can pass it to a function
+
+================	  
+2.4   Unit Tests
+================
+2.4.1   Defining unit tests
+	- Python unit test framework provide a convenient way to define and run tests
+	- Several straight-forward ways to construct and run tests	
+	
+	Some assumptions:
+		- Software is an incremental process
+		- Each time we add to our existing code base, need a way to verify it does 
+		  not cause issues with old code
+		- Adding new code to existing code will cause problems, need a way for
+		  checking		
+	
+	2.4.1.1   Create a test class (Refer to Examples in PDF)
+		a) (Simple) Creation of a test class with some test methods  
+		b) (Advanced) Creation of Test Harness (That impliments the test classes)
+	
+2.5   Extending and embedding Python
+	2.5.1   Introduction and concepts:
+		a) Extending: 
+			- To implement an extension module or an extension type (Eg py to c++)
+			- An extension module appears to be just like a module implemented in
+			  Python code
+			- An extension type appears to be just like a built-in type
+		b) Embedding:
+			- Embedding Python, by contrast, is to put the Python interpreter 
+			  within an application, so that the application can run Python scripts
+		
+		- Types of extensions:
+			a) Extension modules --> Usually exports functions
+			b) Extension types --> Used to implement a new Python data type
+			c) Extension classes --> From the Python side, it appears to be a class
+			
+		- Tools: 
+			a) SWIG -- (Tool that connects programs written in C and C++ with a 
+			   variety of high-level programming languages)
+			b) Pyrex -- (Pyrex lets you write code that mixes Python and C data 
+			   types any way you want, and compiles it into C extension for Python)
+			c) Cython, which seems to be an advanced version of Pyrex
+			
+	2.5.2   Extension modules:
+		- Writing an extension module by hand:
+			1) Create the "init" function followed by the name of the module
+			2) Create the function table maps function names to function pointers
+			   (referenced from Python code and implimented into c/c++)
+			3) Implement each wrapper function:
+				- Simple steps listed here (Refer to PDF For Detailed Steps)
+				a) Capture arguments with PyArg_ParseTuple
+				b) Write the logic
+				c) Handle errors and exceptions
+				d) Create and return a value
+		
+	2.5.3   SWIG Overview:
+		- Enable you to generate wrappers for functions in an existing C function 
+		  library
+		- Try it first before resorting to hard work of writing wrappers by hand
+		- (Detailed steps outlined in PDF example)
+		
+	2.5.4   Pyrex Overview:
+		- Useful tool for writing Python extensions
+		- Pyrex language is similar to Python, easier than doing so in C
+		- Cython appears to be the a newer version of Pyrex
+		- (Detailed steps outlined in PDF example)
+		
+	2.5.5   SWIG vs. Pyrex:
+		- Choose SWIG when:
+			- have an existing C or C++ implementation of the code
+			- In the case that SWIG is to generate the wrappers
+			- (Cython promises to enable you to quickly wrap and call functions
+			  implemented in C)
+			- Or, if you want to write the implementation in C or C++ by hand
+		
+		- Choose Pyrex when:
+			- do not have a C/C++ implementation and you want an easier way to
+			  write that C implementation
+			- Writing Pyrex code, which is a lot like Python, is easier than 
+			  writing C or C++ code by hand
+			- When wanting to avoid making many API calls to Python C API because
+			  the code is written in C
+			  
+	2.5.6   Cython:
+		- simple example that uses Cython to wrap a function implemented in C
+		- (Refer to PDF Example)
+
+	2.5.7   Extension types:
+		- (Segment skipped as it may be depreciated)
+	
+	2.5.8   Extension classes:
+		- (Segment skipped as it may be depreciated)
+
+=============		
+2.6   Parsing
+=============
+- Sometimes simply splitting lines of text into words will be enough, using 
+  string.split()
+- More advanced techniques may require using regex
+
+2.6.1   Special purpose parsers
+	- List of parsers in the Python standard library
+		a) ConfigParser parser --> Configuration File Parser
+		b) getopt --> Commandline parser
+		c) optparse --> More powerful commandline parser
+		d) urlparse --> Parse URL into components
+		e) csv --> CSV file reading and writing
+		f) os.path --> Common pathname manipulations
+	
+	- XML parsers & XML Tools: 
+		a) The Python standard library --> Structured Markup Processing Tools
+		b) xml.dom.minidom --> Lightweight Document Object Modeller (DOM)
+		c) ElementTree --> Enhanced DOM (easier then minidom)
+		d) Lxml --> Similar to ElementTree API but more advanced
+		
+2.6.2   Writing a recursive descent parser by hand (Simple Cases)
+	- Steps:
+		1) recognizer method or function for each production rule in your grammar
+		2) Each recognizer method begins looking at the current token, then consumes
+		   as many tokens as needed to recognize it's own production rule
+		3) calls the recognizer functions for non-terminals on its right-hand side
+		4) A tokenizer -- Something that will enable each recognizer function to
+		   get tokens, one by one.
+			a) A function that produces a list of tokens from which recognizers 
+			   can pop tokens
+			b) A generator whose next method returns the next token; etc
+	
+	- (Detailed advanced example in PDF)
+		- Run through in detail and develop minimodule
+
+2.6.3   Creating a lexer/tokenizer with Plex
+	- For more complex (and real) tokenizers, you may want to use a tool to build 
+	  your tokenizer
+	- (Detailed advanced example in PDF)
+		- Run through in detail and develop minimodule if applicable
+	
+2.6.4   A survey of existing tools
+	- For complex parsing tasks:
+		a) kwParsing --> Parsing Generator in Python
+		b) PLY --> Python Lex-Yacc 
+		c) PyLR --> Fast LR parsing in python_book_01
+		d) Yaaps --> The Yaaps Parser Generator System
+		
+	- For Lexical Analysis:
+		a) Regex for Lexical Analysis --> Effbot.org
+		b) Plex
+
+2.6.5   Creating a parser with PLY
+	- (Detailed advanced example in PDF)
+		- Run through in detail and develop minimodule if applicable
+
+2.6.6   Creating a parser with pyparsing
+	- Recommended compared to the rest of the parser types
+	- (Detailed advanced example in PDF)
+		- Run through in detail and develop minimodule if applicable
+	
+	2.6.6.1   Parsing comma-delimited lines:
+		- (Refer to detailed example in PDF)
+
+	2.6.6.2   Parsing functors
+		- (Refer to detailed example in PDF)
+		
+	2.6.6.3   Parsing names, phone numbers, etc.
+		- (Refer to detailed example in PDF)
+	
+	2.6.6.4   A more complex example
+		- (Refer to detailed example in PDF)
+		
+======================	
+2.7   GUI Applications
+======================
+
+2.7.1   Introduction
+	a) PyGTK --> light-weight and can embed light-weight GUI 
+				 interfaces in an existing application	 
+	b) EasyGUI --> for simpler GUI needs
+	c) WxPython --> heavyweight GUI needs (complete GUI applications)
+
+2.7.2   PyGtk --> (Refer to Detailed Examples in PDF)
+	2.7.2.1   A simple message dialog box
+	2.7.2.2   A simple text input dialog box
+	2.7.2.3   A file selection dialog box
+		
+2.7.3   EasyGUI --> (Refer to Detailed Examples in PDF)
+	2.7.3.1   A simple EasyGUI example
+	2.7.3.2   An EasyGUI file open dialog example
+
+======================================
+2.8   Guidance on Packages and Modules
+======================================
+2.8.1   Introduction
+	- Python has a complete range of implementation & organization structures
+		a) Statements and control structures (at a low level)
+		b) Functions, methods, and classes (at an intermediate level)
+		c) Modules and packages (at an advanced level)
+		
+	- Segment provides guidance on:
+		- How to construct and implement them
+		- How to use them
+		- How to distribute and install them		
+		
+2.8.2   Implementing Packages
+	- A Python package is a collection of Python modules in a disk directory
+	- to be able to import individual modules from a directory, the directory 
+	  must contain a file named '__init__.py' (does not apply to directories that 
+	  are listed in PYTHONPATH)
+	- '__init__.py' serves several purposes 
+		- marks the directory as a Python package
+		- first time an application imports any module from the directory/package,
+		  the code in the module __init__ is evaluated
+	
+2.8.3   Using Packages
+	- Simple way to enable the user to import and use a package is to instruct 
+	  the use to import individual modules from the package
+	- More advanced way to enable the user to import the package is to expose 
+	  those features of the package in the __init__ module
+	- (refer to example in PDF on package import layering)
+	
+2.8.4   Distributing and Installing Packages:
+	- Distutils (Python Distribution Utilities) has special support for 
+	  distributing and installing packages
+	- (refer to example in PDF on package packaging into a single distribution)
+	
+================
+2.9   End Matter
+================
+2.9.1   Acknowledgements and Thanks
+	- (Segment Skipped)
+2.9.2   See Also
+	- (Segment Skipped)

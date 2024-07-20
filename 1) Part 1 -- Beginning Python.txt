@@ -1,0 +1,1104 @@
+Guide Author: Vignesh R.
+Source: A Python Book: Beginning Python, Advanced Python, and Python Exercises by Dave Kuhlman, 2013
+PDF: python_book_01.pdf
+Chapter Status: IP
+Difficulty: Beginner
+
+Txt Document Notes:
+	- Txt document is an excerpt of the important notes and examples from the PDF Guide
+	- Txt document to be used in conjunction with PDF guide
+
+Course Outline:
+	(1) a part for beginners
+	(2) a discussion of several advanced topics that are of interest to Python programmers
+	(3) a Python workbook with lots of exercises
+	
+Contents Page:
+	Part 1 ­­ Beginning Python
+		1.1 Introductions Etc
+			1.1.1 Resources
+			1.1.2 A general description of Python
+			1.1.3 Interactive Python
+		1.2 Lexical matters
+			1.2.1 Lines
+			1.2.2 Comments
+			1.2.3 Names and tokens
+			1.2.4 Blocks and indentation
+			1.2.5 Doc strings
+			1.2.6 Program structure
+			1.2.7 Operators
+			1.2.8 Also see
+			1.2.9 Code evaluation
+		1.3 Statements and inspection ­­ preliminaries
+		1.4 Built­in data­types
+			1.4.1 Numeric types
+			1.4.2 Tuples and lists
+			1.4.3 Strings
+			1.4.3.1 The new string.format method
+			1.4.3.2 Unicode strings
+			1.4.4 Dictionaries
+			1.4.5 Files
+			1.4.6 Other built­in types
+				1.4.6.1 The None value/type
+				1.4.6.2 Boolean values
+				1.4.6.3 Sets and frozensets
+		1.5 Functions and Classes ­­ A Preview
+		1.6 Statements
+			1.6.1 Assignment statement
+			1.6.2 import statement
+			1.6.3 print statement
+			1.6.4 if: elif: else: statement
+			1.6.5 for: statement
+			1.6.6 while: statement
+			1.6.7   continue and break statements
+			1.6.8   try: except: statement
+			1.6.9   raise statement
+			1.6.10   with: statement
+				1.6.10.1   Writing a context manager
+				1.6.10.2   Using the with: statement
+			1.6.11   del
+			1.6.12   case statement
+		1.7   Functions, Modules, Packages, and Debugging
+			1.7.1   Functions
+				1.7.1.1   The def statement
+				1.7.1.2   Returning values
+				1.7.1.3   Parameters
+				1.7.1.4   Arguments
+				1.7.1.5   Local variables
+				1.7.1.6   Other things to know about functions
+				1.7.1.7   Global variables and the global statement
+				1.7.1.8   Doc strings for functions
+				1.7.1.9   Decorators for functions
+			1.7.2   lambda
+			1.7.3   Iterators and generators
+			1.7.4   Modules
+				1.7.4.1   Doc strings for modules
+			1.7.5   Packages
+		1.8   Classes
+			1.8.1   A simple class
+			1.8.2   Defining methods
+			1.8.3   The constructor
+			1.8.4   Member variables
+			1.8.5   Calling methods
+			1.8.6   Adding inheritance
+			1.8.7   Class variables
+			1.8.8   Class methods and static methods
+			1.8.9   Properties
+			1.8.10   Interfaces
+			1.8.11   New-style classes
+			1.8.12   Doc strings for classes
+			1.8.13   Private members
+		1.9   Special Tasks
+			1.9.1   Debugging tools
+			1.9.2   File input and output
+			1.9.3   Unit tests
+				1.9.3.1   A simple example
+				1.9.3.2   Unit test suites
+				1.9.3.3   Additional unittest features
+				1.9.3.4   Guidance on Unit Testing
+			1.9.4   doctest
+			1.9.5   The Python database API
+			1.9.6   Installing Python packages
+		1.10   More Python Features and Exercises
+		
+=====================
+1.1 Introductions Etc
+=====================
+1.1.1 Resources
+	- (No Notes for this segment)
+	
+1.1.2 A general description of Python
+	
+	- Important Features of Python:
+		- Built-in high level data types: strings, lists, dictionaries, etc
+		- The usual control structures: if, if-else, if-elif-else, while, plus a 
+		  powerful collection iterator (for)
+		- Multiple levels of organizational structure: functions, classes, modules,
+		  and packages. These assist in organizing code
+		- Compile on the fly to byte code 
+			- Source code is compiled to byte code without a separate compile step
+		- Object-oriented --> Python provides a consistent way to use objects: 
+		  everything is an object
+		- easy to implement new object types (called classes in object-oriented 
+		  programming)
+		- Extensions in C and C++ (SWIG, sip, Pyrex)
+		- Jython is a version of Python that "plays well with" Java
+	
+	- An overview of Python:
+		-  Python scales from scripting language to non-scripting language:
+			- From "quick and dirty" programs to robust Engines
+		- Interpreted, but also compiled to byte-code automatically
+		- Provides an interactive command line and interpreter shell
+		- Dynamic:
+			- Types are bound to values, not to variables
+			- Function and method lookup is done at runtime
+			- Values are inspect-able
+			- There is an interactive interpreter (more than 1)
+			-can list the methods supported by any given object
+		- Strongly typed at run-time, not compile-time. Objects (values) have a type,
+		  but variables do not
+		- High level built-in data types; high level control structures (for walking 
+		  lists and iterators)
+		- Object-oriented: Simple object definition. Data hiding by agreement.
+		  Multiple inheritance. Interfaces by convention. Polymorphism.
+		- Highly structured -- Statements, functions, classes, modules, and packages 
+		  enable us to write large, well-structured applications for Readability, 
+		  locate-ability, modifiability
+		- Explicitness
+		- First-class objects:
+			- Definition: Can (1) pass to function; (2) return from function; 
+						  (3) stuff into a data structure.
+			- Operators can be applied to values (not variables). Example: f(x)[3]
+		- Indented block structure -- "Python is pseudo-code that runs
+		- Embedding and extending Python
+			a) To embed the Python interpreter in C/C++ applications
+			b) Extend Python with modules and objects implemented in C/C++.
+		- Automatic garbage collection (gc module available for manual control)
+		- Comparison to other compiled languages (e.g. C/C++); Java; Perl, Tcl, and Ruby:
+			- Excells at: development speed, execution speed, clarity and maintainability
+		- Varieties of Python:
+			- CPython -- Standard Python implemented in C
+			- Jython -- Python for the Java environment
+			- PyPy -- Python with a JIT (Just in time) compiler and stackless mode
+			- Stackless -- Python with enhanced thread support and microthreads etc. 
+			- IronPython -- Python for .NET and the CLR
+			- Python 3 -- The new, new Python
+			
+1.1.3 Interactive Python
+	- (No Notes for this segment)
+	
+=====================
+1.2   Lexical matters
+=====================
+1.2.1 Lines:
+	- Statement separator is a semi-colon
+	- only needed when there is more than one statement on a line
+		- BUT writing more than one statement on the same line is considered bad form
+	- Continuation lines -- A back-slash as last character of the line makes the 
+	  following line a continuation of the current line
+		- parenthesis, square bracket, or curly bracket, makes the back-slash
+		  unnecessary
+		
+1.2.2 Comments:
+	- use # for single line
+	- use """ """ for blocks
+	- some editors support ## to comment out blocks of code
+
+1.2.3 Names and tokens:
+	- Alphanumerics and underscores only, must start with letter or underscores
+	- Names and identifiers are case sensitive
+	- Identifiers can be of unlimited length
+	- Special names: Usually begin and end in double underscores
+	- Special name classes: 
+		- Single leading single underscore --> Suggests a "private" method or variable 
+		  name. Not imported by "from module import *".
+		- Single trailing underscore --> Use it to avoid conflicts with Python keywords
+		- Double leading underscores --> Used in a class definition to cause name 
+		  mangling (weak hiding), not often used
+	- Naming conventions (Preferential):
+		- Modules and packages --> all lower case.
+		- Globals and constants --> Upper case.
+		- Classes --> Bumpy caps with initial upper.
+		- Methods and functions --> All lower case with words separated by underscores.
+		- Local variables --> Lower case (with underscore between words) or bumpy caps
+		  with initial lower or your choice.
+		- Good advice --> Follow the conventions used in the code on which you are 
+		  working.
+	- Names/variables in Python do not have a type. Values have types
+	
+1.2.4 Blocks and indentation:
+	- Python uses block structure and nested block structure with indentation (not 
+	  brackets like C)
+	- Empty block --> Use the pass no-op statement
+	- Benefits of the use of indentation to indicate structure:
+		- Reduces the need for a coding standard
+		- Reduces inconsistency
+		- Reduces work. Only need to get the indentation correct, not both indentation 
+		  and brackets
+		- Reduces clutter. Eliminates all the curly brackets.
+		- If it looks correct, it is correct. Indentation cannot fool the reader
+		
+1.2.5 Doc strings:
+	- Doc strings are like comments, but they are carried with executing code
+	- can be viewed with several tools, e.g. help(), obj.__doc__
+	- Tools that extract and format doc strings:
+		- pydoc -> document generator and online help system
+		- epydoc -> Automatic API Documentation Generation for Python
+		- sphinx -> extract documentation from Python doc strings
+		
+1.2.6 Program structure:
+	- (No Notes for this segment)
+	
+1.2.7 Operators:
+	- Refer to PDF for list of all operators
+	
+1.2.8 Also see:
+	- Find out more about PEP 8 – Style Guide for Python Code
+		- https://peps.python.org/pep-0008/
+	- Find out more about PEP 20 - The Zen of Python
+
+1.2.9 Code evaluation:
+	- Creating names/variables is Binding:
+	- The following create names (variables) and bind values(objects) to them:
+		a) Assignment
+		b) Function definition
+		c) Class Definition
+		d) Function and Method called
+		e) Importing a module
+	
+	- First Class Objects:
+		- Almost all objects in python are first class
+		- First Class Definition: 
+			- (1) we can put it in a structured object
+			- (2) we can pass it to a function
+			- (3) we can return it from a function
+	
+	- Objects (aka References[as reference to the object])
+		- Can be Shared
+		- Testing for objectivity:
+			- The object(s) satisfy the identity test operator "is".
+			- The built-in function id() returns the same value
+			- The consequences for mutable objects are different from those for 
+			  immutable objects
+			- Changing (updating) a mutable object referenced through one variable or 
+			  container also changes that object referenced through other variables or
+ 			  containers, because it is the same object.
+			- The built-in function del() removes a reference, not (necessarily) the 
+			  object itself
+
+==============================================
+1.3 Statements and inspection ­­ preliminaries
+==============================================
+- (No Notes for this segment)
+
+=======================
+1.4 Built­in data­types
+=======================
+- Python does mixed arithmetic
+- Core python is not very efficient for merical programming but libaries like Numpy &
+  SciPy provide solutions
+
+1.4.1 Numeric types
+	- Plain integers --> Same precision as a C long, usually a 32-bit binary number
+	- Long integers --> Define with 100L, plain integers are automatically promoted
+	  when needed
+	- Floats --> Implemented as a C double. Precision depends on your machine
+	- Complex numbers --> Define with, for example, 3j or complex(3.0, 2.0)
+	
+1.4.2 Tuples and lists
+	- Lists:
+		- Properties: (1) heterogeneous(diverse), (2) indexable, and (3) dynamic
+		- A dynamic array/sequence
+		- Ordered 
+		- Indexable
+		- Mutable
+		- List constructors: [] or list()
+		- The length of a list (or other container): len(mylist).
+		
+	- range() and xrange():
+		- range(n) creates a list of n integers\
+		- Optional arguments are the starting integer and stride(Increments)
+		- xrange is like range, except that it creates an iterator that produces the 
+		  items in the list of integers instead of the list itself
+	
+	- Tuples:
+		- A tuple is an immutable sequence
+		- Tuples are like lists, but are not mutable
+		- Tuple constructors: () or tuple()
+			- Tuple with a single element requires a comma eg.(x,)
+		- The length of a Tuple (or other container): len(mytuple)
+	
+	- Operators for Lists examples:
+		- Math Operator Examples:
+			a) list1 + list2
+			b) list1 * n
+			c) list1 += list2 
+		- Comparison operators:
+			- Examples: <, ==, >=, etc
+		- Test for membership with the 'in' operator
+	
+	- Subscription:
+		- Indexing into a sequence
+		- Negative indexes --> length of sequence plus (minus) index
+		- Slicing --> Example: data[2:5]. Default values: beginning and end of list
+		- Slicing with strides --> Example: data[::2]
+	
+	- Operations on Tuples:
+		- No operations that change the tuple, since tuples are immutable
+		- Can do iteration and subscription
+		- Can use 'in', 'len()' and some boolean operators
+		
+	- Operations on lists:
+		- List operators -- +, *, etc
+		- Can do iteration and subscription
+		- Can use 'in', 'len()' and boolean operators
+		- Append --> mylist.append(newitem)
+		- Insert --> mylist.insert(index, newitem)
+			- Insert method not as fast as append method
+			- Use 'append reverse' for inserting into front of the list if the need
+			  arises
+		- Extend --> mylist.extend(anotherlist)
+		- Remove --> mylist.remove(item) and mylist.pop()
+			- Note: that append() together with pop() implements a stack
+		- Delete --> del mylist[index]
+		- Pop --> Get last (right-most) item and remove from list -- mylist.pop()
+		
+1.4.3 Strings
+	- Properties:
+		- Strings are sequences
+		- Immutable
+		- Indexable
+		
+	- String operator methods:
+		-  +, <, <=, ==, etc..
+	
+	- Constructor:
+		- Quotes: single and double, Escaping quotes and other special characters
+		  with a back-slash
+		- Triple quoting --> Use triple single quotes or double quotes to define 
+		  multi-line strings
+		- str() --> The constructor and the name of the type/class
+		- Many more exist...
+	
+	- Escape characters:
+		- \t, \n, \\, etc.
+		
+1.4.3.1 The new string.format method in Python 3 (Supercedes python 2)
+
+	- NOTE: F-Strings Superscede the following examples
+	- Examples:
+		In [1]: 'aaa {1} bbb {0} ccc {1} ddd'.format('xx', 'yy', )
+		Out[1]: 'aaa yy bbb xx ccc yy ddd'
+		
+		In [2]: 'number: {0:05d} ok'.format(25)
+		Out[2]: 'number: 00025 ok'
+		
+		In [4]: 'n1: {num1}  n2: {num2}'.format(num2=25, num1=100)
+		Out[4]: 'n1: 100  n2: 25'
+	
+		In [5]: 'n1: {num1}  n2: {num2}  again: {num1}'.format(num2=25, num1=100)
+		Out[5]: 'n1: 100  n2: 25  again: 100'
+		
+		In [6]: 'number: {:05d} ok'.format(25)
+		Out[6]: 'number: 00025 ok'
+		
+		In [7]: values = {'name': 'dave', 'hobby': 'birding'}
+		In [8]: 'user: {name}  activity: {hobby}'.format(**values)
+		Out[8]: 'user: dave  activity: birding'
+
+1.4.3.2 Unicode strings
+	- Examples in PDF for the following:
+		- Representing unicode
+		- Convert to unicode
+		- Convert out of unicode
+		- Test for unicode
+		- Create unicode character
+		
+	- Guideline for working with unicode:
+		- Convert/decode from an external encoding to unicode early 
+		  (my_string.decode(encoding))
+		- Do your work in unicode
+		- Convert/encode to an external encoding late (my_string.encode(encoding)).
+	
+1.4.4 Dictionaries
+	- It is a collection of name-value pairs
+	- The order of elements in a dictionary is undefined
+	- A dictionary is an iterable
+	- Iteration is possible over the following:
+		a) Keys ( Note: Keys must be immutable objects)
+		b) values
+		c) the items
+		
+	- Examples for Constructing Dictionaries:
+		d1 = {}
+		d2 = {key1: value1, key2: value2, }
+		
+	- Constructor for dictionaries Examples: 
+		dict({'one': 2, 'two': 3})
+		dict({'one': 2, 'two': 3}.items())
+		dict({'one': 2, 'two': 3}.iteritems())
+		dict(zip(('one', 'two'), (2, 3)))
+		dict([['two', 3], ['one', 2]])
+		dict(one=2, two=3)
+		dict([(['one', 'two'][i-2], i) for i in (2, 3)])
+		
+	- Iterating over large dictionaries Methods where d = dictionary:
+		- (Note: Used to be known as iter(keys/values/items) in older version of python)
+		- Keys --> d.keys()
+		- Values --> d.itervalues()
+		- Items --> d.iteritems()
+		
+	- Testing for existance of key: where k is key and d is dictionary:
+		a) k in d --> Output: True
+		b) d.has_key(k) --> Output: True
+		c) Get method: (replaces need for testing)
+			- dict.get(key, default=None)
+				- key − This is the Key to be searched in the dictionary
+				- default − This is the Value to be returned in case key does not exist
+	
+1.4.5 Files
+	- Open Files with the open(path, mode) method
+		- 'file()' is possible but open method is recommended instead 
+		- A file object that is open for reading a text file supports the iterator
+		  protocol and, therefore, can be used in a for statement. It iterates over
+		  the lines in the file. This is most likely only useful for text files.
+		- open is a factory method that creates file objects. Use it to open files for
+		  reading, writing, and appending
+	
+	- Open Method Examples:
+		a) myfile = open('myfile.txt', 'r')   # open for reading
+		b) myfile = open('myfile.txt', 'w')   # open for (over-) writing
+		c) log = open('myfile.txt', 'a')      # open for appending to existing content
+	
+	- Close file after use:
+		- myfile.close()
+		
+	- Using 'with' to automatically close files after use:
+		- Examples:
+			with open('tmp01.txt', 'r') as infile:
+				for x in infile:
+				print x
+		- Works because a file is a context manager, has the __enter__ and __exit__
+		  methods for the 'with' function to work correctly
+		  
+		- Use nested with statements to open multiple files (See examples in PDF)
+		
+	- Strip newlines (and other whitespace) from a string with methods strip(), 
+	  lstrip(), and rstrip().
+	- Get the current position within a file by using myfile.tell()
+	- Set the current position within a file by using myfile.seek(). It may be helpful
+      to use os.SEEK_CUR and os.SEEK_END
+		-Examples:
+			- f.seek(2, os.SEEK_CUR) advances the position by two
+			- f.seek(-3, os.SEEK_END) sets the position to the third to last
+			- f.seek(25) sets the position relative to the beginning of the file
+				
+1.4.6 Other built­in types
+	1.4.6.1 The None value/type
+		- The unique value 'None' is used to indicate "no value", "nothing", 
+		  "non-existence", etc. There is only one None value; in other words, 
+		  it's a singleton
+		- Use 'is' to test for 'None'
+		  
+	1.4.6.2 Boolean values
+		- True and False are the boolean values
+		
+	1.4.6.3 Sets and frozensets
+		- A set is an unordered collection of immutable objects. A set does not contain
+		  duplicates
+		- Sets support several set operations, for example: union, intersection, 
+		  difference, etc...
+		- A frozenset is like a set, except that a frozenset is immutable. Therefore,
+		  a frozenset is hash-able and can be used as a key in a dictionary, and it can
+		  be added to a set
+		- Refer to PDF for example on set constuction and methods
+
+
+======================================
+1.5 Functions and Classes ­­ A Preview
+======================================
+Keynotes:
+	- Python objects are first-class objects
+
+	- Object oriented programming is:
+		a) Encapsulation
+		b) Data Hiding
+		c) Inheritance
+		4) Polymorphism
+
+	- Python programs are made up of:
+		1) Expressions
+		2) Statements
+		3) Functions:
+			a) Are objects
+			b) Are Callable
+		4) Classes:
+			Methods Available:
+			a) Encapsulation Methods
+			b) Data Hiding Methods
+			c) Inheritance
+		5) Modules
+		6) Packages
+
+	- Overview Stucture of a typical class:	
+		a) Methods
+		b) Constructor
+		c) (Static) Class Variables
+		d) Super/subclasses
+
+==============		
+1.6 Statements
+==============
+	1.6.1 Assignment statement
+		- Basically is the statement --> item == value
+		- Assignment to a name creates a new variable (if it does not exist in the
+		  namespace) and a binding. Specifically it binds a value to the new name.
+		  Calling a function also does this to the (formal) parameters within the 
+		  local namespace.
+		- The binded data type is associated with the value, in python (dynamic 
+		  language), not the variable (similar to static languages)
+		- multiple assignment in a single statement is possible --> a = b = 123
+		- interchange (swap) the value of two variables is possible --> a, b = b, a
+		 
+	1.6.2 import statement
+		- Evaluates the content of a module
+		- Likely to create varia
+		- Evaluation of a module occurs once when the program is run, hence the 
+		  module is shared across an application
+		- module is evaluated from top to bottom, Later statements can replace values 
+		  created earlier, true of functions and classes, as well as (other) variables
+		- Import looks for modules using -->sys.path
+		- Packages need a file named --> __init__.py in the directory for them to be
+		  detected by the import command
+		- The statement --> __name__ == "__main__": --> Makes a module both import-able
+		  and executable
+		- Refer to PDF for more detailed information for the Import function
+		
+	1.6.3 print function (depreciated: statement)
+		- print sends output to sys.stdout
+		- It adds a newline, unless an extra comma is added
+		
+		- Arguments to print:
+			- Multiple items --> Separated by commas
+			- End with comma to suppress carriage return
+			- Use string formatting for more control over output
+			- various "pretty-printing" functions and methods using pprint
+	
+	1.6.4 if: elif: else: statement
+		- Example use case in PDF
+		- Conditions --> Compare with eval() and exec
+		- Operators: (Examples in PDF)
+			a) and / or / not
+			b) is / is not
+		- Comparison types when "if" operator is used:
+			--> == , != , < , > , <= , >= , etc...
+		
+	1.6.5 for: statement
+		- Iterate over a sequence or an "iterable" object
+		- An iterable can be used for list comprehension and generator expressions
+		- Sequences and containers are iterable (eg. tuples, lists, strings, 
+		  dictionaries)
+		- Create an iterator object with built-in functions such as iter() and 
+		  enumerate()
+		- Functions that use the yield statement, produce an iterator, although it's
+		  actually called a generator
+		- An iterable implements the iterator interface and satisfies the iterator 
+		  protocol. The iterator protocol: __iter__() and next() methods
+		- Testing for Iterability:
+			- Use the "for" statement
+		- Note: Python 3 has got updated/changed iterator and generator protocols
+		- The "for" statement can do unpacking as well
+			- Refer to example in PDF
+		- The "for" statement also has an optional "else" clause:
+			- "Else" executes if the "for" statement completes normally
+			--> That is; if a "break" statement does not execute within the 'for' loop
+		
+		- Useful Functions with 'for' method:
+			a) enumerate(iterable):
+				- Returns an iterable that produces pairs (tuples) containing count
+				  (index) and value
+				- Refer to simple example in PDF
+			b) range([start,] stop[, step]) and xrange([start,] stop[, step])
+		
+		- List Comprehension:
+			- Useful in 'for' statements
+			- Use a generator expression instead when large number of elements exist
+			  in a comprehension
+			- List comprehension looks like a 'for' statement but housed within square
+			  brackets e.g.--> [f(x) for x in iterable]
+		
+		- Generator Expressions:
+			- looks similar to list comprehension but is surrounded by a parentheses ()
+			- Eg: items = ['apple', 'banana', 'cherry', 'date']
+				  gen1 = (item.upper() for item in items)
+				  for x in gen1:
+					print 'x:', x
+			
+	1.6.6 while: statement
+		- Not usually used in python as the 'for' is more versitile
+		- 'break' and 'continue' statements are useful  in the while statement
+		- Has an optional else' clause which will execute if the while block
+		  completes normally (no break statement within)
+		
+	1.6.7 continue and break statements
+		- 'break' statement exits from a loop
+		- 'continue' statement causes execution to immediately continue at the start
+		   of the loop
+		- Can be used in 'for' and 'while' loops
+		
+	1.6.8 try: except: statement
+		- Exceptions are a systematic and consistent way of processing errors and 
+		  unusual events in Python
+		- 'Try' statement catches an exception
+		- Exceptions are classes, see python doc for more infomation
+		
+	1.6.9 raise statement
+		- used to raise an exception
+			- eg.  raise MyExceptionClass(value)
+		
+	1.6.10 with: statement
+		- enables us to use a context manager (any object that satisfies the context
+		  manager protocol) to add code before (on entry to) and after (on exit from) 
+		  a block of code
+		  
+		1.6.10.1   Writing a context manager
+			- A context manager is an instance of a class that satisfies this interface
+			  (__enter__ / __exit__ --> interface) 
+			- The __enter__ method is called before our block of code is entered
+			- Usually, but not always, we will want the __enter__ method to return self,
+			  that is, the instance of our context manager class and then use the
+			  instance (obj in this case) in the nested block
+			- The __exit__ method is called when our block of code is exited either
+			  normally or because of an exception
+			- Commonly used for access file contents
+			  
+		1.6.10.2   Using the with: statement
+			- Example provided in PDF
+		
+	1.6.11   del statement:
+		- Remove names from namespace (eg. global variable)
+		- Remove items from a collection (eg. list / dictionary)
+		- Delete an attribute from an instance (eg. method housed in a class instance)
+	
+	1.6.12   case statement (Not in python)
+		- There is no case statement in Python. Use the if: statement with a sequence 
+		  of elif: clauses
+=================================================
+1.7   Functions, Modules, Packages, and Debugging
+=================================================
+1.7.1   Functions
+	1.7.1.1   The def statement
+	 - The 'def' statement is evaluated
+	 - It produces a function/method (object) and binds it to a variable in the current
+	   name-space
+	 - the code in its nested block is not executed
+		- Therefore, many errors may not be detected until each and every path through
+		  that code is tested
+	
+	1.7.1.2   Returning values
+		- The return statement is used to return values from a function
+		- return statement takes zero or more values, separated by commas
+		- using commas actually returns a single tuple
+		- default value is 'none'
+		- unpacking can be used to capture multiple values
+		- Example:
+			def test(x, y):
+				return x * 3, y * 4
+			a, b = test(3, 4)
+			print (a) --> 9
+			print (b) --> 16
+		
+	1.7.1.3   Parameters
+		a) Default value parameters:
+			- Giving a parameter a default value makes that parameter optional
+			- Note: If a function has a parameter with a default value, then all 
+			  "normal" arguments must proceed the parameters with default values.
+			  More completely, parameters must be given from left to right in the 
+			  following order:
+				1) Normal arguments
+				2) Arguments with default values.
+				3) Argument list (*args)
+				4) Keyword arguments (**kwargs)
+			- Note:
+				- List parameters --> *args. It's a tuple
+				- Keyword parameters --> **kwargs. It's a dictionary
+
+	1.7.1.4   Arguments
+		- When calling a function, values may be passed to a function with positional
+		  arguments or keyword arguments
+		- Positional arguments must placed before (to the left of) keyword arguments
+		- Passing lists to a function as multiple arguments --> some_func(*aList)
+		  causes Python to unroll the arguments
+		  
+	1.7.1.5   Local variables
+		- Any binding operation creates a local variable
+		- Examples:
+			1) parameters of a function
+			2) assignment to a variable in a function
+			3) The import statement
+			4) Contrast with accessing a variable
+		
+		- Variable look-up (The LGB/LEGB rule)
+		  Search Order: 
+			a) local
+			b) enclosing
+			c) global
+			d) built-in
+
+		- The global statement (Not recommended)
+			- Inside a function, we must use global when we want to set the value of a
+			  global variable		
+		
+	1.7.1.6   Other things to know about functions
+		- Functions are first-class:
+			a) can store them in a structure
+			b) pass them to a function
+			c) return them from a function
+		- Function calls can take keyword arguments:
+			- Eg. test(size=25)
+		- Formal parameters to a function can have default values:
+			- Eg. test(size=0)
+			- Note: Do not use mutable objects as default values
+		- You can "capture" remaining arguments with *args, and **kwargs
+			- Refer to example in PDF
+		- Order of arguements:
+			1) Normal arguments 
+			2) default arguments
+			3) keyword arguments
+		- A function that does not explicitly return a value, returns None
+		- In order to set the value of a global variable, declare the variable with
+		  'global'.
+
+	1.7.1.7   Global variables and the global statement
+		- In order to assign a value to a global variable, declare the variable as 
+		  global at the beginning of the function or method
+		- Extensive example available in PDF
+		
+	1.7.1.8   Doc strings for functions
+		- docstrings as a triple-quoted string beginning with the first line of a 
+		  function or method
+		  
+	1.7.1.9   Decorators for functions
+		- A decorator performs a transformation on a function
+		- A decorator is applied using the "@" character on a line immediately
+		  preceeding the function definition header
+		- Examples of decorators that are built-in functions are:
+			- @classmethod
+			- @staticmethod
+			- @property
+		- See PDF for detailed examples
+		- Notes:
+			- The decorator form (with the "@" character) is equivalent to the form
+			(commented out) that calls the decorator function explicitly.
+			- The use of classmethods and staticmethod will be explained later in the 
+			  section on object-oriented programming.
+			- A decorator is implemented as a function. Therefore, to learn about some 
+			  specific decorator, you should search for the documentation on or the
+			  implementation of that function. Remember that in order to use a function,
+			  it must be defined in the current module or imported by the current 
+			  module or be a built-in.
+			- The form that explicitly calls the decorator function (commented out in
+			  the example above) is equivalent to the form using the "@" character.
+
+1.7.2   lambda
+	- Convenience function for that is both:
+		- anonymous (does not need a name)
+		- contains only an expression and no statements
+	- Example:
+		fn = lambda x, y, z: (x ** 2) + (y * 2) + z
+		In [2]: fn(4, 5, 6)
+		Out[2]: 32
+		
+	- A lambda may be useful as an event handler --> (Powerful Concept)
+		- Eg. To test a method with an internal function (See PDF for Detailed Example)
+		
+1.7.3   Iterators and generators: (Important Concept)
+	a) Iterator:
+		- An iterator is something that satisfies the iterator protocol
+		- If it's an iterator, you can use it in a 'for:' statement
+	b) Generator:
+		- A generator is a class or function that implements an iterator, i.e. that 
+		implements the iterator protocol
+	c) The iterator protocol:
+		- It implements a __iter__ method, which returns an iterator object
+		- It implements a next function, which returns the next item from the
+		  collection, sequence, stream, etc of items to be iterated over
+	
+	- Yield Statement (An Expression):
+		- Enables to write functions that are generators
+		- Such functions may be similar to coroutines as they may "yield" multiple
+		  times and are resumed
+		- A function or method containing a yield statement implements a generator
+		  (becomes an object that implements the iterator protocol)
+	
+	- Refer to Simple Example 1 in PDF
+	- Important Notes about 'Yield' from Simple Example:
+		a) The yield statement returns a value. When the next item is requested and the
+		   iterator is "resumed", execution continues immediately after the yield
+		   statement.
+		b) We can terminate the sequence generated by an iterator by using a return
+		   statement with no value
+		c) To resume a generator, use the generator's next() or send() methods. send() 
+		   is like next(), but provides a value to the yield expression
+		d) We can alternatively obtain the items in a sequence by calling the iterator's
+		   next() method.
+		e) Since an iterator is a first-class object, we can save it in a data structure
+		   and can pass it around for use at different locations and times in our program
+		f) When an iterator is exhausted or empty, it throws the StopIteration exception,
+		   which we can catch.
+	
+	- An instance of a class which implements the __iter__ method, returning an iterator,
+	  is iterable:
+		- it can be used in a for statement or in a list comprehension
+		- or in a generator expression
+		- or as an argument to the iter() built-in method
+		- But, But, the class most likely implements a generator method which can be
+		  called directly
+	- Refer to Complex Example 2 in PDF:
+		- Example implements an iterator that produces all the objects in a tree of 
+		  objects
+	- Notes on Complex Example: 
+		- An instance of class 'Node' is "iterable". It can be used directly in a 'for' 
+		  statement, a list comprehension, etc. So, for example, when an instance of 
+		  'Node' is used in a 'for' statement, it produces an iterator.
+		- Can also call the 'Node.walk_method' directly to obtain an iterator.
+		- Method 'Node.walk_tree' and functions 'walk_tree' and 'walk_tree_recur'
+		  are generators. When called, they return an iterator. They do this because
+		  they each contain a 'yield' statement
+		- These methods/functions are recursive as they call themselves. Since they are 
+		  generators, they must call themselves in a context that uses an iterator, for
+		  example in a 'for' statement
+	
+1.7.4   Modules
+	- A module is a Python source code file
+	- A module can be imported
+	- A module can be run
+	- The following attributes are of special interest:
+		a) __doc__ --> The doc string of the module
+		b) __name__ --> The name of the module when the module is imported,
+						but the string "__main__" when the module is executed.
+		c) Other names that are created (bound) in the module
+	
+	- To make a module both import-able and run-able, use the following idiom 
+	  (at the end of the module):
+	- Example: 
+	  def main():
+		# lines of code....		
+      if __name__ == '__main__':
+		main()
+	
+	- Notes about modules and objects:
+		a) A module is an object.
+		b) A module (object) can be shared.
+		c) A specific module is imported only once in a single run. This means that a
+		   single module object is shared by all the modules that import it.
+		   
+	1.7.4.1   Doc strings for modules
+		- Add docstrings as a triple-quoted string at or near the top of the file
+		
+1.7.5   Packages
+	- A package is a directory on the file system which contains a file named __init__.py
+	- The __init__.py file:
+		a) It makes modules in the directory "import-able"
+		b) Can __init__.py be empty? --> Yes
+		c) It is evaluated the first time that an application imports anything from 
+		   that directory/package
+		d) What can you do with it?
+			- Perform initialization needed by the package
+			- Make variables, functions, classes, etc available
+		e) Define a variable named '__all__' to specify the list of names that will be
+		   imported by from 'my_package import*' --> __all__ = ['func1', 'func2',]
+			- '__all__' can be used at the module level, as well as at the package level
+			
+	- Guidance and suggestions:
+		- "Flat is better", Use the __init__.py file to present a "flat" view of the API
+		  for your code.
+		- Use the __init__.py module to present a "clean" API.
+		- (Refer to PDF for elaboration on the above guidance)
+=============		
+1.8   Classes
+=============
+	- Classes model the behavior of objects in the "real" world
+	- Methods implement the behaviors of these types of objects
+	- Member variables hold (current) state
+	- Classes enable us to implement new data types in Python
+	
+	1.8.1   A simple class:
+		- (Simple Examples in PDF)
+		
+	1.8.2   Defining methods:
+		- A method is a function defined in class scope and with first parameter
+		- 3 Method Types:
+			a) instance method
+			b) class methods
+			c) Static Methods
+		- (Simple Examples in PDF)
+		
+	1.8.3   The constructor:
+		- The constructor is a method named '__init__'
+		- (Simple Examples in PDF)
+		- Note: 
+			- The self variable is explicit
+			- It references the current object, that is the object whose method is
+			  currently executing
+	
+	1.8.4   Member variables:
+		- (Simple Examples in PDF)
+	
+	1.8.5   Calling methods:
+		- Use the instance and the dot operator
+		- Calling a method defined in the same class or a superclass:
+			- From outside the class --> Use the instance: Eg. some_object.some_method()
+			- From within the same class --> Use 'self': Eg. self.a_method()
+			- From with a subclass when the method is in the superclass and there is a 
+			  method with the same name in the current class, use 'super':
+			  --> Eg. SomeSuperClass.__init__(self, arg1, arg2) super(CurrentClass,
+					  self).__init__(arg1, arg2)
+		- Calling a method defined in a specific superclass --> Use the class (name).
+
+		
+	1.8.6   Adding inheritance:
+		- Referencing Superclasses:
+			a) use built-in 'super' (Recommended)
+			b) Explicit name of the superclass
+			(Refer to Example in PDF)
+			Note: The use of super() may solve problems searching for the base class
+				  when using multiple inheritance. A better solution is to not use 
+				  multiple inheritance.
+		- Multiple inheritance can cause confusion
+			- Eg. class C(A, B):
+					.....
+			- Python searches superclasses MRO (method resolution order) which can cause
+			  the search order of super classes can get complex		
+	
+	1.8.7   Class variables:
+		- Also called static data
+		- Class variable is shared by instances of the class
+		- Define at class level with assignment operator
+
+	1.8.8   Class methods and static methods: (Useful concept)
+		a) Instance (plain) methods
+			- receives the instance as its first argument
+			
+		b) Class methods
+			- receives the class as its first argument
+			- Defineine with built-in function classmethod() or decorator @classmethod
+			  
+		c) Static methods
+			- receives neither the instance nor the class as its first argument
+			- Define with built-in function staticmethod() or decorator @staticmethod
+		
+		Notes on Decorators:
+			- A decorator of the form @afunc is the same as m = afunc(m)
+			- Eg1. @afunc
+				   def m(self): pass
+				   
+			- Eg2. def m(self): pass
+				   m = afunc(m)
+				   
+			- Note: Eg1 = Eg2
+			
+			- Can use decorators @classmethod and @staticmethod (instead of the 
+			  classmethod() and staticmethod() built-in functions) to declare class 
+			  methods and static methods
+			
+			- (Refer to detailed examples in PDF)
+			
+	1.8.9   Properties: (Important Concept)
+		- The property built-in function enables us to write classes in a way that does 
+		  not require a user of the class to use getters and setters
+		- The property built-in function is also a decorator
+		- (Refer to PDF for detailed example)
+		
+		- Notes:
+			- Mark the instance variable as private by prefixing it with an underscore
+			- The name of the instance variable and the name of the property must be
+ 			  different else recursion error will occur
+
+	1.8.10   Interfaces: (Important Concept)
+		- An interface is to implement a method with a specific name and a specific 
+		  arguments
+		- A way to define an "interface" is to define a class containing methods that
+		  have a header and a doc string but no implementation
+		- Notes:
+			- Interfaces are not enforced
+			- A class does not have to implement all of an interface
+	
+	1.8.11   New-style classes:
+		- Subclasses 'object' or a class that subclasses 'object' (that is, another
+		  new-style class)
+		- (Refer to Simple and Complex example in PDF)
+		- Notes:
+			- In order to be new-style, a class must inherit (directly or indirectly)
+			  from object. Note that if you inherit from a built-in type, you get this 
+			  automatically
+			- New-style classes unify types and classes
+			- You can subclass (built-in) types such as dict, str, list, file, etc.
+			- The built-in types now provide factory functions: dict(), str(), int(), 
+			  file(), etc.
+			- The built-in types are introspect-able -- Use x.__class__,
+			  dir(x.__class__), isinstance(x, list), etc.
+			- New-style classes give you properties and descriptors
+			- New-style classes enable you to define static methods. Actually, 
+			  all classes enable you to do this.
+			- A new-style class is a user-defined type. For an instance of a new-style 
+			  class x, type(x) is the same as x.__class__.
+	
+	1.8.12   Doc strings for classes:
+		- docstrings as a (triple-quoted) string beginning with the first line of a class
+	
+	1.8.13   Private members:
+		- leading underscore to a member name (method or data variable) to suggest
+		  that the member is private
+===================
+1.9   Special Tasks
+===================
+			1.9.1   Debugging tools (Important Concept to cover)
+				a) pdb --> The Python debugger
+					- Initialize by --> pdb.run('expression')
+					- (refer to examples in PDF)
+				b) Inspect --> import inspect
+				c) Miscellaneous Tools:
+					- Refer to commands in PDF
+				
+			1.9.2   File input and output
+				- Initalized using the 'open' command
+				- Recommended to open using the 'with' commmand as files do not need 
+				  to be explicitly closed
+				- (Refer to PDF for simple open/read/writeline examples)
+				
+			1.9.3   Unit tests (Important Concept to cover)
+				1.9.3.1   A simple example:
+					- Basically a class with methods for run-check and main execution
+					  to test responses from the 'unit' 
+					- - (Refer to simple example in PDF)
+
+				1.9.3.2   Unit test suites:
+					- Layering of unit tests to form a more complex example
+					- (Refer to complex example 1 in PDF)
+					
+				1.9.3.3   Additional unittest features
+					- More advanced concepts in provided example in PDF
+					- (Refer to complex 2 example in PDF)
+					
+				1.9.3.4   Guidance on Unit Testing
+					- Corner cases may not be checked if unit testing is not done
+					- Unit tests facilitate a frequent and short design and implement
+					  and release development cycle
+					- Designing the tests before writing the code is good convention
+					
+			1.9.4   doctest
+				- Use 'doctest' for testing simple harnesses as:
+					a) can run a test at the Python interactive prompt
+					b) copy and paste that test into a doc string in your module
+					c) run the tests automatically from within your module under 
+					   doctest
+					
+				- Initialize 'doctest' by adding the idiom at end of code:
+					--> def _test():
+							import doctest
+							doctest.testmod()
+						if __name__ == "__main__":
+							_test()
+					---> (See output example in PDF)
+			1.9.5   The Python database API
+				- Python database API defines a standard interface for access to a
+				  relational database
+				- must install the database adapter (interface module) for your 
+				  particular database, e.g. PostgreSQL, MySQL, Oracle, etc
+				- (Refer to PDF for more information, complex example and links)
+			
+			1.9.6   Installing Python packages
+				- Simple Method (Unix):
+					--> $ python setup.py build
+					--> $ python setup.py install    # as root
+					
+				- Advanced Method: (Recommended)
+					- Pip install
+
+=========================================
+1.10   More Python Features and Exercises
+=========================================
+	- Additional Learning Links and resources in PDF
+
+""" End of Guide """
